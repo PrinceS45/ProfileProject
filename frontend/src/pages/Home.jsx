@@ -2,7 +2,8 @@ import React, { useState, useEffect } from 'react';
 import useProfileStore from '../store/useProfileStore';
 import ProfileCard from '../components/ProfileCard';
 import { FaSearch, FaTimes } from 'react-icons/fa';
-
+import api from '../api/axios';
+import toast from 'react-hot-toast';
 const HomePage = () => {
   // Connect to the Zustand store
   const { profiles, loading, error, getAllProfiles, getProfilesBySkill } = useProfileStore();
@@ -68,6 +69,25 @@ const HomePage = () => {
           <h1 className="text-4xl md:text-5xl font-extrabold text-gray-800 mb-2">Find Your Next Star</h1>
           <p className="text-lg text-gray-600">Search through our talented pool of candidates by skill.</p>
         </header>
+
+        {/* server health check */}
+       <div className='flex justify-center items-center my-3'>
+         <button
+          onClick={async () => {
+            try {
+              const res = await api.get("/health");
+              console.log(res.data) ;
+              toast.success(res.data?.message || "Server is healthy");
+            } catch (error) {
+              toast.error("Server is down ❌");
+            }
+          }}
+          className="py-3 px-3 rounded-2xl mx-auto bg-blue-600 font-serif text-2xl hover:bg-blue-900"
+        >
+          Click to check server health
+        </button>
+       </div>
+
 
         {/* Search Bar */}
         <div className="max-w-2xl mx-auto mb-12">

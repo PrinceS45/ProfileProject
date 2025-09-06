@@ -3,7 +3,7 @@ import React, { useState, useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import useAuth from '../store/useAuth'; // Adjust path if necessary
 import toast from 'react-hot-toast';
-import { FaEnvelope, FaLock } from 'react-icons/fa';
+import { FaEnvelope, FaLock , FaSpinner } from 'react-icons/fa';
 
 const Login = () => {
     // Local state for the form inputs

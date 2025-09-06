@@ -4,9 +4,9 @@ import {getProfileById , getMyProfile, getAllProfile , getProfileBySkills ,  cre
 
 const router = express.Router() ; 
 
-router.get("/profile/:id" , getProfileById) ; 
 router.get("/profiles" , getAllProfile) ; 
 router.get("/profile/skills" , getProfileBySkills) ; 
+router.get("/profile/:id" , getProfileById) ; 
 router.get("/me" , protectRoute , getMyProfile) ; 
 
 router.post("/createProfile"  , protectRoute , createProfile) ; 
