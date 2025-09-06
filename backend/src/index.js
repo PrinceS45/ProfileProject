@@ -14,7 +14,7 @@ const app = express() ;
 
 // handle cors here
 app.use(cors({
-    origin: 'http://localhost:5173', 
+    origin: ['http://localhost:5173', 'https://profile-project-rho.vercel.app/']  , 
     credentials: true, 
               
 })); 
